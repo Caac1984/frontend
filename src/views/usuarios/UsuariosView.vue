@@ -12,12 +12,45 @@
 
           <fieldset>
             <legend>Cadastro:</legend>
-            <form class="form-group">
-
-              <!--<p><label>Login</label><input type="text" v-model="user.login" /></p>-->
-              <input v-model="user.login" type="login" class="form-control" placeholder="Login" required>
-              <p></p>
-              <input v-model="user.senha" type="senha" class="form-control" placeholder="Senha" required>
+            <form class="row g-3 ">
+              <fieldset class="p-3 col-sm-12 col-md-9">
+                <!--<p><label>Login</label><input type="text" v-model="user.login" /></p>-->
+                <div class="row">
+                  <div class="col-md-6">
+                    <input v-model="user.login" type="login" class="form-control" placeholder="Login" required>
+                    <p></p>
+                  </div>
+                  <div class="col-md-6">
+                    <input v-model="user.senha" type="senha" class="form-control" placeholder="Senha" required>
+                    <p></p>
+                  </div>
+                </div>
+                <div class="row g-3 ">
+                  <div class="col-md-6">
+                    <input v-model="user.nome" type="text" class="form-control" placeholder="Nome" required>
+                    <p></p>
+                  </div>
+                  <div class="col-md-6">
+                    <input v-model="user.sobrenome" type="text" class="form-control" placeholder="Sobrenome" required>
+                    <p></p>
+                  </div>
+                </div>
+                <div class="row g-3 ">
+                  <div class="col">
+                    <input v-model="user.periodo" type="text" class="form-control" placeholder="Período" required>
+                    <p></p>
+                  </div>
+                  <div class="col-sm-12 col-md-6 md-2">
+                    <select name="listaPermissoes" id="permissoes" class="form-select"
+                      aria-label="Default select example">
+                      <option selected>Permissões:</option>
+                      <option value="ROLE_USER">Usuário</option>
+                      <option value="ROLE_PROJETOS">Projetos</option>
+                      <option value="ROLE_ADMIN">Administrador</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
               <!--<p><label>Senha</label><input type="password" v-model="user.senha" /></p>-->
               <p></p>
               <p><button class="btn btn-primary salvar-btn" @click="salvar">Salvar</button></p>
@@ -27,16 +60,18 @@
           <table class="table table-dark table-striped">
             <thead>
               <tr>
-                <th>Id:</th>
                 <th>Login:</th>
-                <th>Permissões:</th>
+                <th>Nome:</th>
+                <th>Sobrenome:</th>
+                <th>Período:</th>
               </tr>
             </thead>
             <tbody class="table-group-divider">
               <tr v-for="(u, i) in usuarios" v-bind:key="i" @click="abreEdit(u.id)">
-                <td>{{ u.id }}</td>
                 <td>{{ u.login }}</td>
-                <td>{{ u.permissoes.length }}</td>
+                <td>{{ u.nome }}</td>
+                <td>{{ u.sobrenome }}</td>
+                <td>{{ u.periodo }}</td>
               </tr>
             </tbody>
           </table>
@@ -113,11 +148,26 @@ export default {
 };
 </script>
 
-<style scoped>
+.form-label {
+margin-bottom: 5px;
+color: white;
+}
 
+<style scoped>
 .card {
   padding: 20px;
   /* Define o espaçamento interno */
+}
+
+.form-select {
+  width: 40%;
+  /* Ajuste a largura conforme necessário */
+  height: 38px;
+  /* Ajuste a altura conforme necessário */
+  font-size: 0.9em;
+  /* Ajuste o tamanho da fonte conforme necessário */
+  margin-left: 10px;
+  /* Ajuste a margem à esquerda conforme necessário */
 }
 
 .form-control {
@@ -129,6 +179,8 @@ export default {
   /* Ajuste o tamanho da fonte conforme necessário */
   margin-left: 10px;
   /* Ajuste a margem à esquerda conforme necessário */
+
+
 }
 
 
@@ -176,15 +228,4 @@ table tbody tr {
   cursor: pointer;
 }
 
-fieldset input[type="text"] {
-  border: solid 1px blue;
-}
-
-fieldset input[type="password"] {
-  border: solid 1px blue;
-}
-
-fieldset button {
-  border: solid 1px blue;
-}
 </style>

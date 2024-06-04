@@ -62,10 +62,11 @@ button {
     border-radius: 10px;
     font-size: 18px;
     /* Define o tamanho do texto para 18 pixels */
+    width: 100% !important;
 }
 
 .navbar-brand {
-    width: 110px;
+    width: 100px;
     height: 40px;
     margin-right: 50px;
     margin-left: 20px;
@@ -90,27 +91,6 @@ button {
 .bot-deslogar:hover {
     border-radius: 6px !important;
     background-color: rgb(254, 229, 2) !important;
-}
-
-.dropdown-menu {
-    background-color: #0031f6 !important;
-    box-shadow: 0px 8px 16px rgba(1, 1, 1, 1) !important;
-}
-
-.dropdown-item {
-    color: #dee8da !important;
-}
-
-.dropdown-item:hover {
-    background-color: #0101015f !important;
-    color: rgb(197, 178, 7) !important;
-}
-
-body {
-    background: rgb(14, 0, 255);
-    background: linear-gradient(90deg, rgba(0, 164, 255, 1) 0%, rgba(14, 0, 255, 1) 50%, rgba(0, 164, 255, 1) 100%);
-    height: 100%;
-    width: 100%;
 }
 
 @media (max-width: 20%) {

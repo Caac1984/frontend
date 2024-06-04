@@ -8,16 +8,23 @@
         <!-- Card de login -->
         <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
 
-          <h1>Projetos: (em cosntrução)</h1>
+          <h1>Projetos:</h1>
 
           <fieldset>
             <legend>Cadastro:</legend>
             <form class="form-group">
 
               <!--<p><label>Login</label><input type="text" v-model="user.login" /></p>-->
-              <input v-model="user.prjeto" type="login" class="form-control" placeholder="Projeto" required>
-              <p></p>
-              
+              <div class="row">
+                <div class="col-md-6">
+                  <input v-model="user.projeto" type="text" class="form-control" placeholder="Projeto" required>
+                  <p></p>
+                </div>
+                <div class="col-md-6">
+                  <input v-model="user.prorfessor" type="text" class="form-control" placeholder="Professor" required>
+                  <p></p>
+                </div>
+              </div>
               <!--<p><label>Senha</label><input type="password" v-model="user.senha" /></p>-->
               <p></p>
               <p><button class="btn btn-primary salvar-btn" @click="salvar">Salvar</button></p>
@@ -28,14 +35,15 @@
             <thead>
               <tr>
                 <th>Id:</th>
-                <th>Login:</th>
-                <th>Permissões:</th>
+                <th>Projeto:</th>
+                <th>Professor:</th>
               </tr>
             </thead>
             <tbody class="table-group-divider">
-              <tr v-for="(u, i) in usuarios" v-bind:key="i" @click="abreEdit(u.id)">
+              <tr v-for="(u, i) in projetos" v-bind:key="i" @click="abreEdit(u.id)">
                 <td>{{ u.id }}</td>
-                <td>{{ u.login }}</td>
+                <td>{{ u.projeto }}</td>
+                <td>{{ u.professor }}</td>
                 <td>{{ u.permissoes.length }}</td>
               </tr>
             </tbody>
@@ -65,17 +73,17 @@ export default {
   },
   mounted() {
     console.log(AuthService.dados.token);
-    this.getUsuarios();
+    this.getProjetos();
   },
   methods: {
-    async getUsuarios() {
+    async getProjetos() {
       try {
-        let r = await fetch("http://localhost:8080/users", {
+        let r = await fetch("http://localhost:8080/projetos", {
           method: "GET",
           headers: { Authorization: `Bearer ${AuthService.dados.token}` },
         });
         r.json().then((j) => {
-          this.usuarios = j;
+          this.projetos = j;
         });
       } catch (ex) {
         console.log("ERRO", ex);
@@ -85,9 +93,9 @@ export default {
       this.user.permissoes = ["ROLE_USER"];
       console.log(JSON.stringify(this.user));
       if (this.user.login != null && this.user.senha != null) {
-        fetch("http://localhost:8080/users", {
+        fetch("http://localhost:8080/projetos", {
           method: "POST",
-          body: JSON.stringify(this.user),
+          body: JSON.stringify(this.projeto),
           headers: {
             Authorization: `Bearer ${AuthService.dados.token}`,
             "Content-Type": "application/json",
@@ -99,7 +107,7 @@ export default {
                 console.log("ERRO", j);
               });
             }
-            this.getUsuarios();
+            this.getProjetos();
           })
           .catch((e) => {
             console.log("ERRO", e);
@@ -107,14 +115,13 @@ export default {
       }
     },
     abreEdit(id) {
-      this.$router.push(`/usuarios/${id}`);
+      this.$router.push(`/projetos/${id}`);
     },
   },
 };
 </script>
 
 <style scoped>
-
 .card {
   padding: 20px;
   /* Define o espaçamento interno */
@@ -143,14 +150,6 @@ export default {
   }
 }
 
-.cadastro {
-  align-items: center;
-  /* Centraliza verticalmente os itens */
-  display: flexbox;
-  /* Define um layout flexível */
-
-}
-
 .salvar-btn {
   margin-left: 10px;
   /* Ajuste a margem à esquerda conforme necessário */
@@ -174,17 +173,5 @@ table * {
 
 table tbody tr {
   cursor: pointer;
-}
-
-fieldset input[type="text"] {
-  border: solid 1px blue;
-}
-
-fieldset input[type="password"] {
-  border: solid 1px blue;
-}
-
-fieldset button {
-  border: solid 1px blue;
 }
 </style>
