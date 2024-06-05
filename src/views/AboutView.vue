@@ -8,6 +8,11 @@
                 <fieldset>
                     <form class="form-group">
                         <h1>Sobre</h1>
+                        <p class="fs-4">(Descrição)</p>
+                        <p class="fs-4">Alunos:</p>
+                        <p class="fs-6">Alexander - Integração de sistema</p>
+                        <p class="fs-6">Carlos - FrontEnd</p>
+                        <p class="fs-6">Hebert - BackEnd</p>
                     </form>
                 </fieldset>
             </div>

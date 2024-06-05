@@ -12,22 +12,21 @@
 
           <fieldset>
             <legend>Cadastro:</legend>
-            <form class="form-group">
+            <form class="">
+              <div class="row gx-3 gy-2 align-items-center p-2">
 
-              <!--<p><label>Login</label><input type="text" v-model="user.login" /></p>-->
-              <div class="row g-3">
-                <div class="col-md-6 ">
+                <!--<p><label>Login</label><input type="text" v-model="user.login" /></p>-->
+                <div class="col-sm-4 form-group">
                   <input v-model="user.projeto" type="text" class="form-control" placeholder="Projeto" required>
-                  <p></p>
                 </div>
-                <div class="col-md-6 ">
+                <div class="col-sm-4">
                   <input v-model="user.prorfessor" type="text" class="form-control" placeholder="Professor" required>
-                  <p></p>
                 </div>
               </div>
-              <!--<p><label>Senha</label><input type="password" v-model="user.senha" /></p>-->
-              <p></p>
-              <p><button class="btn btn-primary salvar-btn" @click="salvar">Salvar</button></p>
+              <div class="row gx-3 gy-2 align-items-center p-2">
+                <!--<p><label>Senha</label><input type="password" v-model="user.senha" /></p>-->
+                <p><button class="btn btn-primary salvar-btn" @click="salvar">Salvar</button></p>
+              </div>
             </form>
           </fieldset>
 
@@ -128,7 +127,7 @@ export default {
 }
 
 .form-control {
-  width: 40%;
+  
   /* Ajuste a largura conforme necessário */
   height: 30px;
   /* Ajuste a altura conforme necessário */

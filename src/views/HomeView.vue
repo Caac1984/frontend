@@ -7,7 +7,8 @@
                 <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
                 <fieldset>
                     <form class="form-group">
-                        <h1>Início</h1>
+                        <h1>Início:</h1>
+                        <p class="fs-4">(Descrição)</p>
                     </form>
                 </fieldset>
             </div>

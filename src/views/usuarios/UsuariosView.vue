@@ -12,37 +12,33 @@
 
           <fieldset>
             <legend>Cadastro:</legend>
-            <form class="row g-3 ">
-              <fieldset class="p-3 col-sm-12 col-md-9">
+            <form class="">
+              <fieldset>
                 <!--<p><label>Login</label><input type="text" v-model="user.login" /></p>-->
-                <div class="row">
-                  <div class="col-md-6">
+                <div class="row gx-3 gy-2 align-items-center p-2">
+                  <div class="col-sm-4 form-group">
                     <input v-model="user.login" type="login" class="form-control" placeholder="Login" required>
-                    <p></p>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-sm-4">
                     <input v-model="user.senha" type="senha" class="form-control" placeholder="Senha" required>
-                    <p></p>
                   </div>
                 </div>
-                <div class="row g-3 ">
-                  <div class="col-md-6">
+                <div class="row gx-3 gy-2 align-items-center p-2">
+                  <div class="col-sm-4">
                     <input v-model="user.nome" type="text" class="form-control" placeholder="Nome" required>
-                    <p></p>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-sm-4">
                     <input v-model="user.sobrenome" type="text" class="form-control" placeholder="Sobrenome" required>
-                    <p></p>
                   </div>
                 </div>
-                <div class="row g-3 ">
-                  <div class="col">
+                <div class="row gx-3 gy-2 align-items-center p-2">
+                  <div class="col-sm-4">
                     <input v-model="user.periodo" type="text" class="form-control" placeholder="Período" required>
-                    <p></p>
+                    
                   </div>
-                  <div class="col-sm-12 col-md-6 md-2">
+                  <div class="col-sm-4">
                     <select name="listaPermissoes" id="permissoes" class="form-select"
-                      aria-label="Default select example">
+                      aria-label="">
                       <option selected>Permissões:</option>
                       <option value="ROLE_USER">Usuário</option>
                       <option value="ROLE_PROJETOS">Projetos</option>
@@ -52,8 +48,9 @@
                 </div>
               </fieldset>
               <!--<p><label>Senha</label><input type="password" v-model="user.senha" /></p>-->
-              <p></p>
+              <div class="row gx-3 gy-2 align-items-center p-4">
               <p><button class="btn btn-primary salvar-btn" @click="salvar">Salvar</button></p>
+              </div>
             </form>
           </fieldset>
 
@@ -171,8 +168,6 @@ color: white;
 }
 
 .form-control {
-  width: 40%;
-  /* Ajuste a largura conforme necessário */
   height: 30px;
   /* Ajuste a altura conforme necessário */
   font-size: 0.9em;
@@ -227,5 +222,4 @@ table * {
 table tbody tr {
   cursor: pointer;
 }
-
 </style>
