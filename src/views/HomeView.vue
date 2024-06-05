@@ -2,7 +2,7 @@
     <div class="home">
         <barra-navegacao></barra-navegacao>
 
-        <div class="row justify-content-center">
+        <div class="row g-0 justify-content-center">
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
                 <fieldset>

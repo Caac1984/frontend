@@ -2,7 +2,7 @@
   <barra-navegacao></barra-navegacao>
 
   <div class="cadastro">
-    <div class="row justify-content-center"> <!-- Centraliza o conteúdo horizontalmente -->
+    <div class="row g-0 justify-content-center"> <!-- Centraliza o conteúdo horizontalmente -->
       <!-- Coluna responsiva -->
       <div class="col-lg-9 col-md-6 col-sm-8"> <!-- Ajusta o tamanho da coluna em diferentes dispositivos -->
         <!-- Card de login -->

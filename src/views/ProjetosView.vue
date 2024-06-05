@@ -2,7 +2,7 @@
   <barra-navegacao></barra-navegacao>
 
   <div class="cadastro">
-    <div class="row justify-content-center"> <!-- Centraliza o conteúdo horizontalmente -->
+    <div class="row g-0 justify-content-center"> <!-- Centraliza o conteúdo horizontalmente -->
       <!-- Coluna responsiva -->
       <div class="col-lg-9 col-md-6 col-sm-8"> <!-- Ajusta o tamanho da coluna em diferentes dispositivos -->
         <!-- Card de login -->
@@ -15,12 +15,12 @@
             <form class="form-group">
 
               <!--<p><label>Login</label><input type="text" v-model="user.login" /></p>-->
-              <div class="row">
-                <div class="col-md-6">
+              <div class="row g-3">
+                <div class="col-md-6 ">
                   <input v-model="user.projeto" type="text" class="form-control" placeholder="Projeto" required>
                   <p></p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 ">
                   <input v-model="user.prorfessor" type="text" class="form-control" placeholder="Professor" required>
                   <p></p>
                 </div>
