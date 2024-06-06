@@ -14,8 +14,7 @@
                         <p>Permissões:</p>
                         <textarea v-model="usuario.permissoes"></textarea>
                         <hr />
-                        <div class="row justify-content-center">
-                        <div class="row col-sm-6 align-items-center p-4">
+                        <div class="row col-sm-6 align-items-center p-0">
                             <div class="col-sm-4">
                                 <button class="btn btn-primary atualizar" @click="atualizaUsuario">Atualizar</button>
                             </div>
@@ -25,7 +24,6 @@
                             <div class="col-sm-4">
                                 <button class="btn btn-primary voltar" onclick="history.back()">Voltar</button>
                             </div>
-                        </div>
                     </div>
                     </fieldset>
                 </div>
