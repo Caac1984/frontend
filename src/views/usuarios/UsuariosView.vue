@@ -36,7 +36,7 @@
                     <input v-model="user.periodo" type="text" class="form-control" placeholder="Período" required>
                     
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-8 menu-drop">
                     <select name="listaPermissoes" id="permissoes" class="form-select"
                       aria-label="">
                       <option selected>Permissões:</option>
@@ -48,8 +48,8 @@
                 </div>
               </fieldset>
               <!--<p><label>Senha</label><input type="password" v-model="user.senha" /></p>-->
-              <div class="row gx-3 gy-2 p-4">
-              <button class="btn btn-primary salvar-btn" @click="salvar">Salvar</button>
+              <div class="row gx-3 gy-2 col-sm-2 align-items-center p-4">
+              <button class="btn btn-primary" @click="salvar">Salvar</button>
               </div>
             </form>
           </fieldset>
@@ -197,21 +197,27 @@ color: white;
 
 }
 
-.salvar-btn {
-  margin-left: 10px;
-  /* Ajuste a margem à esquerda conforme necessário */
-  width: 8%;
-  /* Ajuste a largura conforme necessário */
-  height: 35px;
-  /* Ajuste a altura conforme necessário */
-  font-size: 1em;
+button {
   /* Ajuste o tamanho da fonte conforme necessário */
   box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.745) !important;
 }
 
-.salvar-btn:hover {
+button:hover {
   color: black;
   background-color: rgb(40, 232, 6);
+}
+
+.menu-drop select {
+  font-size: 0.9em; /* Ajusta o tamanho da fonte conforme necessário */
+  margin-left: 10px; /* Ajusta a margem à esquerda conforme necessário */
+  width: 49%; /* Largura padrão de 49% */
+}
+
+/* Media query para ajustar a largura em telas menores */
+@media only screen and (max-width: 768px) {
+  .menu-drop select {
+    width: 100%; /* Largura de 100% quando a largura da tela for menor que 768px */
+  }
 }
 
 table * {

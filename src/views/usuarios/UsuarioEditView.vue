@@ -14,9 +14,19 @@
                         <p>Permissões:</p>
                         <textarea v-model="usuario.permissoes"></textarea>
                         <hr />
-                        <button class="btn btn-primary salvar-btn1" @click="atualizaUsuario">Atualizar</button>
-                        <button class="btn btn-primary salvar-btn2" @click="excluiUsuario">Excluir</button>
-                        <button class="btn btn-primary col-lg-2 voltar1" onclick="history.back()">Voltar</button>
+                        <div class="row justify-content-center">
+                        <div class="row col-sm-6 align-items-center p-4">
+                            <div class="col-sm-4">
+                                <button class="btn btn-primary atualizar" @click="atualizaUsuario">Atualizar</button>
+                            </div>
+                            <div class="col-sm-4">
+                                <button class="btn btn-primary excluir" @click="excluiUsuario">Excluir</button>
+                            </div>
+                            <div class="col-sm-4">
+                                <button class="btn btn-primary voltar" onclick="history.back()">Voltar</button>
+                            </div>
+                        </div>
+                    </div>
                     </fieldset>
                 </div>
             </div>
@@ -123,42 +133,23 @@ textarea {
     /* Ajuste o espaçamento interno conforme necessário */
 }
 
-button {
-    margin: 0 10px;
-    /* Ajuste a margem conforme necessário */
-    box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.745) !important;
-}
-
-.salvar-btn1:hover {
+.atualizar:hover {
     color: black;
     background-color: yellow;
 }
 
-.salvar-btn2:hover {
+.excluir:hover {
     color: black;
     background-color: rgb(255, 21, 0);
 }
 
-.salvar-btn1,
-.salvar-btn2,
-.voltar1  {
-    margin-top: 10px;
-    /* Ajuste a margem superior conforme necessário */
-    width: 20%;
-    /* Ajuste a largura conforme necessário */
-    height: 40px;
-    /* Ajuste a altura conforme necessário */
-    font-size: 1em;
-    /* Ajuste o tamanho da fonte conforme necessário */
-}
-
-.voltar1 {
-  /* Ajuste o tamanho da fonte conforme necessário */
-  box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.745) !important;
-}
-
-.voltar1:hover{
+.voltar:hover {
     color: black;
+    background-color: rgb(71, 186, 0);
 }
 
+button {
+    /* Ajuste o tamanho da fonte conforme necessário */
+    box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.745) !important;
+}
 </style>

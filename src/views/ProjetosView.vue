@@ -23,9 +23,9 @@
                   <input v-model="user.prorfessor" type="text" class="form-control" placeholder="Professor" required>
                 </div>
               </div>
-              <div class="row gx-3 gy-2 align-items-center p-2">
+              <div class="row gx-3 gy-2 col-sm-2 align-items-center p-3">
                 <!--<p><label>Senha</label><input type="password" v-model="user.senha" /></p>-->
-                <p><button class="btn btn-primary salvar-btn" @click="salvar">Salvar</button></p>
+                <p><button class="btn btn-primary" @click="salvar">Salvar</button></p>
               </div>
             </form>
           </fieldset>
@@ -149,19 +149,12 @@ export default {
   }
 }
 
-.salvar-btn {
-  margin-left: 10px;
-  /* Ajuste a margem à esquerda conforme necessário */
-  width: 8%;
-  /* Ajuste a largura conforme necessário */
-  height: 35px;
-  /* Ajuste a altura conforme necessário */
-  font-size: 1em;
+button {
   /* Ajuste o tamanho da fonte conforme necessário */
   box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.745) !important;
 }
 
-.salvar-btn:hover {
+button:hover {
   color: black;
   background-color: rgb(40, 232, 6);
 }
