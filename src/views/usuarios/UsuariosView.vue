@@ -49,7 +49,7 @@
               </fieldset>
               <!--<p><label>Senha</label><input type="password" v-model="user.senha" /></p>-->
               <div class="row gx-3 gy-2 align-items-center p-4">
-              <p><button class="btn btn-primary salvar-btn" @click="salvar">Salvar</button></p>
+              <button class="btn btn-primary salvar-btn" @click="salvar">Salvar</button>
               </div>
             </form>
           </fieldset>

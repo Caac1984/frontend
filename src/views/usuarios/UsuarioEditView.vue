@@ -2,7 +2,7 @@
     <barra-navegacao></barra-navegacao>
 
     <div class="cadastro">
-        <div class="row justify-content-center"> <!-- Centraliza o conteúdo horizontalmente -->
+        <div class="row g-0 justify-content-center"> <!-- Centraliza o conteúdo horizontalmente -->
             <!-- Coluna responsiva -->
             <div class="col-lg-6 col-md-6 col-sm-8"> <!-- Ajusta o tamanho da coluna em diferentes dispositivos -->
                 <!-- Card de login -->
@@ -14,9 +14,9 @@
                         <p>Permissões:</p>
                         <textarea v-model="usuario.permissoes"></textarea>
                         <hr />
-                        <button class="btn btn-primary salvar-btn1" @click="atualizaUsuario">Atualiza</button> 
+                        <button class="btn btn-primary salvar-btn1" @click="atualizaUsuario">Atualiza</button>
                         <button class="btn btn-primary salvar-btn2" @click="excluiUsuario">Excluir</button>
-                        <p></p>
+                        <button class="btn btn-primary col-lg-2 voltar1" onclick="history.back()">Voltar</button>
                     </fieldset>
                 </div>
             </div>
@@ -88,49 +88,77 @@ export default {
 
 <style scoped>
 .card {
-  padding: 20px;
-  /* Define o espaçamento interno */
+    padding: 20px;
+    /* Define o espaçamento interno */
 }
 
 fieldset {
-  border: 2px solid blue; /* Ajuste a borda conforme necessário */
-  padding: 20px; /* Ajuste o espaçamento interno conforme necessário */
-  border-radius: 10px; /* Ajuste o arredondamento dos cantos conforme necessário */
-  margin-top: 20px; /* Ajuste a margem superior conforme necessário */
+    border: 2px solid blue;
+    /* Ajuste a borda conforme necessário */
+    padding: 20px;
+    /* Ajuste o espaçamento interno conforme necessário */
+    border-radius: 10px;
+    /* Ajuste o arredondamento dos cantos conforme necessário */
+    margin-top: 20px;
+    /* Ajuste a margem superior conforme necessário */
 }
 
 legend {
-  font-size: 1.2em; /* Ajuste o tamanho da fonte conforme necessário */
-  font-weight: bold; /* Deixe o texto em negrito */
+    font-size: 1.2em;
+    /* Ajuste o tamanho da fonte conforme necessário */
+    font-weight: bold;
+    /* Deixe o texto em negrito */
 }
 
 textarea {
-  width: 100%; /* Faz com que o textarea ocupe a largura total */
-  height: 100px; /* Ajuste a altura conforme necessário */
-  margin-top: 10px; /* Ajuste a margem superior conforme necessário */
-  border-radius: 5px; /* Ajuste o arredondamento dos cantos conforme necessário */
-  padding: 10px; /* Ajuste o espaçamento interno conforme necessário */
+    width: 100%;
+    /* Faz com que o textarea ocupe a largura total */
+    height: 100px;
+    /* Ajuste a altura conforme necessário */
+    margin-top: 10px;
+    /* Ajuste a margem superior conforme necessário */
+    border-radius: 5px;
+    /* Ajuste o arredondamento dos cantos conforme necessário */
+    padding: 10px;
+    /* Ajuste o espaçamento interno conforme necessário */
 }
 
 button {
-  margin: 0 10px; /* Ajuste a margem conforme necessário */
-  box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.745) !important;
+    margin: 0 10px;
+    /* Ajuste a margem conforme necessário */
+    box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.745) !important;
 }
 
 .salvar-btn1:hover {
-  color: black;
-  background-color: yellow;
+    color: black;
+    background-color: yellow;
 }
 
 .salvar-btn2:hover {
-  color: black;
-  background-color: rgb(255, 21, 0);
+    color: black;
+    background-color: rgb(255, 21, 0);
 }
 
-.salvar-btn1, .salvar-btn2 {
-  margin-top: 10px; /* Ajuste a margem superior conforme necessário */
-  width: 20%; /* Ajuste a largura conforme necessário */
-  height: 40px; /* Ajuste a altura conforme necessário */
-  font-size: 1em; /* Ajuste o tamanho da fonte conforme necessário */
+.salvar-btn1,
+.salvar-btn2,
+.voltar1  {
+    margin-top: 10px;
+    /* Ajuste a margem superior conforme necessário */
+    width: 20%;
+    /* Ajuste a largura conforme necessário */
+    height: 40px;
+    /* Ajuste a altura conforme necessário */
+    font-size: 1em;
+    /* Ajuste o tamanho da fonte conforme necessário */
 }
+
+.voltar1 {
+  /* Ajuste o tamanho da fonte conforme necessário */
+  box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.745) !important;
+}
+
+.voltar1:hover{
+    color: black;
+}
+
 </style>

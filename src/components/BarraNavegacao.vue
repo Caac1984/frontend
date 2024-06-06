@@ -1,101 +1,120 @@
 <template>
     <div class="container-fluid mb-3 p-3 bg">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a href="/">
-                <img src="@/assets/logo.png" alt="Logo" class="navbar-brand" />
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <router-link to="/">Início</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link to="/projetos">Projetos</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link to="/usuarios">Usuários</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link to="/sobre">Sobre</router-link>
-                    </li>
-                </ul>
-                <div class="deslogar">
-                    {{ logado.login }} | <button class="bot-deslogar" @click="desloga">Sair</button>
-                </div>
-            </div>
-        </nav>
+        <a href="/">
+          <img src="@/assets/logo.png" alt="Logo" class="navbar-brand" />
+        </a>
+    </nav>
+    
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <router-link to="/" class="nav-link">Início</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/projetos" class="nav-link">Projetos</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/usuarios" class="nav-link">Usuários</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/sobre" class="nav-link">Sobre</router-link>
+            </li>
+          </ul>
+          <div class="deslogar">
+            <div class="log-user">{{ logado.login }}</div> | <button class="bot-deslogar" @click="desloga">Sair</button>
+          </div>
+        </div>
+      </nav>
     </div>
-</template>
-
-
-<script>
-import LoginService from "@/services/LoginService";
-import AuthService from "@/services/AuthService";
-export default {
+  </template>
+  
+  <script>
+  import LoginService from "@/services/LoginService";
+  import AuthService from "@/services/AuthService";
+  
+  export default {
     methods: {
-        desloga() {
-            LoginService.deslogar();
-            this.$router.push(`/?d=${new Date()}`);
-        },
+      desloga() {
+        LoginService.deslogar();
+        this.$router.push(`/?d=${new Date()}`);
+      },
     },
     computed: {
-        logado() {
-            return AuthService.dados;
-        },
+      logado() {
+        return AuthService.dados;
+      },
     },
-};
-</script>
-
-<style scoped>
-
-button {
-  margin: 0 10px; /* Ajuste a margem conforme necessário */
-  box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.745) !important;
-}
-
-.navbar {
+  };
+  </script>
+  
+  <style scoped>
+  button {
+    margin: 0 10px; /* Ajuste a margem conforme necessário */
+    box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.745) !important;
+  }
+  
+  .navbar {
     border-radius: 10px;
     font-size: 18px;
-    /* Define o tamanho do texto para 18 pixels */
-    width: 100% !important;
-}
-
-.navbar-brand {
+  }
+  
+  .navbar-brand {
     width: 100px;
     height: 40px;
     margin-right: 50px;
     margin-left: 20px;
-}
-
-.nav-item {
+  }
+  
+  .nav-item {
     margin-right: 10px; /* Espaçamento entre os itens do menu */
-}
-
-.deslogar {
+  }
+  
+  .deslogar {
     margin-left: auto;
     display: flex;
     align-items: center;
     margin-right: 20px;
-    
-}
-
-.bot-deslogar {
+  }
+  
+  .bot-deslogar {
     border-radius: 6px !important;
-}
-
-.bot-deslogar:hover {
+  }
+  
+  .bot-deslogar:hover {
     border-radius: 6px !important;
     background-color: rgb(254, 229, 2) !important;
-}
+  }
+  
+  .log-user {
+    font-weight: bold;
+    font-family: Helvetica;
+    text-transform: uppercase;
+    font-size: 19px;
+    color: rgb(17, 0, 255);
+  }
+  
+ 
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .navbar-brand {
+    margin-right: 20px; /* Ajuste do espaçamento da logo em telas pequenas */
+    margin-left: 10px; /* Ajuste do espaçamento da logo em telas pequenas */
+  }
 
-@media (max-width: 20%) {
-    .nav-pills {
-        flex-direction: column;
-    }
+  .nav-pills {
+    flex-direction: column; /* Menu em coluna em telas pequenas */
+  }
+
+  .dropdown-menu {
+    width: 100%; /* Ajuste do menu suspenso para ocupar toda a largura em telas pequenas */
+  }
 }
-</style>
+  </style>
+  

@@ -40,9 +40,18 @@ body {
 }
 
 /* Estilos responsivos */
-@media (max-width: 20%) {
+@media (max-width: 768px) {
+  .navbar-brand {
+    margin-right: 20px; /* Ajuste do espaçamento da logo em telas pequenas */
+    margin-left: 10px; /* Ajuste do espaçamento da logo em telas pequenas */
+  }
+
   .nav-pills {
-    flex-direction: column;
+    flex-direction: column; /* Menu em coluna em telas pequenas */
+  }
+
+  .dropdown-menu {
+    width: 100%; /* Ajuste do menu suspenso para ocupar toda a largura em telas pequenas */
   }
 }
 </style>
