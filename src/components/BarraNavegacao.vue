@@ -55,6 +55,7 @@
   </script>
   
   <style scoped>
+  
   button {
     margin: 0 10px; /* Ajuste a margem conforme necessário */
     box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.745) !important;
@@ -66,7 +67,7 @@
   }
   
   .navbar-brand {
-    width: 100px;
+    width: 130px;
     height: 40px;
     margin-right: 50px;
     margin-left: 20px;
