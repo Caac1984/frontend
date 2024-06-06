@@ -29,7 +29,7 @@
                          <input v-model="senha" type="password" class="form-control" placeholder="Senha" required>
                          <br>
                          <!-- Botão de envio do formulário de login -->
-                         <button class="btn btn-primary" @click.prevent="logar">Logar</button>
+                         <button class="btn btn-primary" @click.prevent="logar">Conectar</button>
                          <br><br>
                          <!-- Link para redefinição de senha -->
                          <!--  <router-link to="/alterarsenha" target="_blank">Esqueceu a senha?</router-link>  -->
