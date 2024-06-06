@@ -40,5 +40,6 @@ class AuthService {
   }
   return ret;
  }
+
 }
 export default new AuthService();
