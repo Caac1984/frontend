@@ -48,7 +48,7 @@
                 </div>
               </fieldset>
               <!--<p><label>Senha</label><input type="password" v-model="user.senha" /></p>-->
-              <div class="row gx-3 gy-2 align-items-center p-4">
+              <div class="row gx-3 gy-2 p-4">
               <button class="btn btn-primary salvar-btn" @click="salvar">Salvar</button>
               </div>
             </form>
@@ -177,7 +177,6 @@ color: white;
 
 
 }
-
 
 .form-group {
 

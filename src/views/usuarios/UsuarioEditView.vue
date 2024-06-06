@@ -14,7 +14,7 @@
                         <p>Permissões:</p>
                         <textarea v-model="usuario.permissoes"></textarea>
                         <hr />
-                        <button class="btn btn-primary salvar-btn1" @click="atualizaUsuario">Atualiza</button>
+                        <button class="btn btn-primary salvar-btn1" @click="atualizaUsuario">Atualizar</button>
                         <button class="btn btn-primary salvar-btn2" @click="excluiUsuario">Excluir</button>
                         <button class="btn btn-primary col-lg-2 voltar1" onclick="history.back()">Voltar</button>
                     </fieldset>

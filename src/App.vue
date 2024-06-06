@@ -53,5 +53,6 @@ body {
   .dropdown-menu {
     width: 100%; /* Ajuste do menu suspenso para ocupar toda a largura em telas pequenas */
   }
+
 }
 </style>
