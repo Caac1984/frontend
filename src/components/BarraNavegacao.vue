@@ -1,12 +1,14 @@
 <template>
   <div class="container-fluid mb-3 p-3 bg">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a href="/" class="navbar-brand">
-        <img src="@/assets/logo.png" alt="Logo" class="navbar-logo" />
+      <a href="/">
+        <img src="@/assets/logo.png" alt="Logo" class="navbar-brand" />
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
           <li class="nav-item">
@@ -23,8 +25,7 @@
           </li>
         </ul>
         <div class="deslogar">
-          <div class="log-user">{{ logado.login }}</div>
-          <button class="bot-deslogar" @click="desloga">Sair</button>
+          <div class="log-user">{{ logado.login }}</div> | <button class="bot-deslogar" @click="desloga">Sair</button>
         </div>
       </div>
     </nav>
@@ -52,7 +53,8 @@ export default {
 
 <style scoped>
 button {
-  margin: 0 10px; /* Ajuste a margem conforme necessário */
+  margin: 0 10px;
+  /* Ajuste a margem conforme necessário */
   box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.745) !important;
 }
 
@@ -61,15 +63,16 @@ button {
   font-size: 18px;
 }
 
-.navbar-logo {
+.navbar-brand {
   width: 130px;
   height: 40px;
-  margin-right: 20px;
+  margin-right: 50px;
   margin-left: 20px;
 }
 
 .nav-item {
-  margin-right: 10px; /* Espaçamento entre os itens do menu */
+  margin-right: 10px;
+  /* Espaçamento entre os itens do menu */
 }
 
 .deslogar {
@@ -96,15 +99,19 @@ button {
   color: rgb(17, 0, 255);
 }
 
+
 /* Estilos responsivos */
 @media (max-width: 768px) {
   .navbar-logo {
-    margin-right: 10px; /* Ajuste do espaçamento da logo em telas pequenas */
-    margin-left: 10px; /* Ajuste do espaçamento da logo em telas pequenas */
+    margin-right: 10px;
+    /* Ajuste do espaçamento da logo em telas pequenas */
+    margin-left: 10px;
+    /* Ajuste do espaçamento da logo em telas pequenas */
   }
 
   .navbar-nav {
-    flex-direction: column; /* Menu em coluna em telas pequenas */
+    flex-direction: column;
+    /* Menu em coluna em telas pequenas */
   }
 }
 </style>
