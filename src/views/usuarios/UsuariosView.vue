@@ -34,7 +34,6 @@
                 <div class="row gx-3 gy-2 align-items-center p-2">
                   <div class="col-sm-4">
                     <input v-model="user.periodo" type="text" class="form-control" placeholder="Período" required>
-                    
                   </div>
                   <div class="col-sm-8 menu-drop">
                     <select name="listaPermissoes" id="permissoes" class="form-select"
@@ -48,7 +47,7 @@
                 </div>
               </fieldset>
               <!--<p><label>Senha</label><input type="password" v-model="user.senha" /></p>-->
-              <div class="row gx-3 gy-2 col-sm-2 align-items-center p-4">
+              <div class="row gx-3 gy-2 col-sm-2 p-4 align-items-center">
               <button class="btn btn-primary" @click="salvar">Salvar</button>
               </div>
             </form>
@@ -61,14 +60,18 @@
                 <th>Nome:</th>
                 <th>Sobrenome:</th>
                 <th>Período:</th>
+                <th>Atualizar dados:</th>
               </tr>
             </thead>
             <tbody class="table-group-divider">
-              <tr v-for="(u, i) in usuarios" v-bind:key="i" @click="abreEdit(u.id)">
+              <tr v-for="(u, i) in usuarios" v-bind:key="i" >
                 <td>{{ u.login }}</td>
                 <td>{{ u.nome }}</td>
                 <td>{{ u.sobrenome }}</td>
                 <td>{{ u.periodo }}</td>
+                <td>
+              <button class="btn btn-primary atualizar" @click="abreEdit(u.id)">atualizar</button>
+              </td>
               </tr>
             </tbody>
           </table>
@@ -145,11 +148,6 @@ export default {
 };
 </script>
 
-.form-label {
-margin-bottom: 5px;
-color: white;
-}
-
 <style scoped>
 .card {
   padding: 20px;
@@ -207,6 +205,10 @@ button:hover {
   background-color: rgb(40, 232, 6);
 }
 
+.atualizar:hover {
+  background-color: yellow;
+}
+
 .menu-drop select {
   font-size: 0.9em; /* Ajusta o tamanho da fonte conforme necessário */
   margin-left: 10px; /* Ajusta a margem à esquerda conforme necessário */
@@ -225,6 +227,6 @@ table * {
 }
 
 table tbody tr {
-  cursor: pointer;
+  
 }
 </style>

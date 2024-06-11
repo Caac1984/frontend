@@ -7,7 +7,6 @@
                 <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
                 <fieldset>
                     <form class="col-sm-6 form-group p-2">
-                        <h2>Início:</h2>
                         <p class="fs-5">Seja bem vindo!</p>
                         <div class="log-user">{{ logado.login }}</div>
                     </form>
