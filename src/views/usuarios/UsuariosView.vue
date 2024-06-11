@@ -33,7 +33,7 @@
                 </div>
                 <div class="row gx-3 gy-2 align-items-center p-2">
                   <div class="col-sm-4">
-                    <input v-model="user.periodo" type="text" class="form-control" placeholder="Período" required>
+                    <input v-model="user.periodo" type="number" class="form-control" placeholder="Período" required>
                   </div>
                   <div class="col-sm-8 menu-drop">
                     <select name="listaPermissoes" id="permissoes" class="form-select"
@@ -68,9 +68,9 @@
                 <td>{{ u.login }}</td>
                 <td>{{ u.nome }}</td>
                 <td>{{ u.sobrenome }}</td>
-                <td>{{ u.periodo }}</td>
-                <td>
-              <button class="btn btn-primary atualizar" @click="abreEdit(u.id)">atualizar</button>
+                <td align="center">{{ u.periodo }}</td>
+                <td align="center">
+              <button class="btn btn-primary atualizar" @click="abreEdit(u.id)">Editar</button>
               </td>
               </tr>
             </tbody>

@@ -178,6 +178,7 @@
   }
   
   .atualizar:hover {
+    color: black;
     background-color: yellow;
   }
   
