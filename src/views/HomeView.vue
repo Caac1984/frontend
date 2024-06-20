@@ -6,8 +6,8 @@
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
                 <fieldset>
-                    <form class="col-sm-6 form-group p-2">
-                        <p class="fs-5">Seja bem vindo!</p>
+                    <form class="p-2 telaInicio">
+                        <p class="fs-2">Seja bem vindo!</p>
                         <div class="log-user">{{ logado.login }}</div>
                     </form>
                 </fieldset>
@@ -59,6 +59,10 @@ export default {
     text-transform: uppercase;
     font-size: 25px;
     color: blue;
+}
+
+.telaInicio {
+    text-align: center;
 }
 
 </style>

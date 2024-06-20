@@ -1,43 +1,56 @@
 <template>
+  <!-- Componente da barra de navegação -->
   <barra-navegacao></barra-navegacao>
 
-  <div class="cadastro">
+  <!-- Div principal que envolve a seção de usuários -->
+  <div class="usuarios">
+    <!-- Linha centralizada horizontalmente -->
     <div class="row g-0 justify-content-center"> <!-- Centraliza o conteúdo horizontalmente -->
-      <!-- Coluna responsiva -->
+      <!-- Coluna responsiva que ajusta o tamanho em diferentes dispositivos -->
       <div class="col-lg-9 col-md-6 col-sm-8"> <!-- Ajusta o tamanho da coluna em diferentes dispositivos -->
         <!-- Card de login -->
-        <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
+        <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }"> <!-- Exibe o card de login se registerActive for falso -->
 
+          <!-- Título da seção de usuários -->
           <h1>Usuários:</h1>
 
+          <!-- Fieldset para agrupar o formulário de cadastro -->
           <fieldset>
             <legend>Cadastro:</legend>
-            <form class="">
+            <!-- Formulário de cadastro de usuários -->
+            <form>
               <fieldset>
-                <!--<p><label>Login</label><input type="text" v-model="user.login" /></p>-->
+                <!-- Primeira linha de inputs: Login e Senha -->
                 <div class="row gx-3 gy-2 align-items-center p-2">
+                  <!-- Input para login -->
                   <div class="col-sm-4 form-group">
                     <input v-model="user.login" type="login" class="form-control" placeholder="Login" required>
                   </div>
+                  <!-- Input para senha -->
                   <div class="col-sm-4">
                     <input v-model="user.senha" type="senha" class="form-control" placeholder="Senha" required>
                   </div>
                 </div>
+                <!-- Segunda linha de inputs: Nome e Sobrenome -->
                 <div class="row gx-3 gy-2 align-items-center p-2">
+                  <!-- Input para nome -->
                   <div class="col-sm-4">
                     <input v-model="user.nome" type="text" class="form-control" placeholder="Nome" required>
                   </div>
+                  <!-- Input para sobrenome -->
                   <div class="col-sm-4">
                     <input v-model="user.sobrenome" type="text" class="form-control" placeholder="Sobrenome" required>
                   </div>
                 </div>
+                <!-- Terceira linha de inputs: Período e Permissões -->
                 <div class="row gx-3 gy-2 align-items-center p-2">
+                  <!-- Input para período -->
                   <div class="col-sm-4">
-                    <input v-model="user.periodo" type="number" class="form-control" placeholder="Período" required>
+                    <input v-model="user.periodo" min="1" max="10" type="number" class="form-control" placeholder="Período" required>
                   </div>
+                  <!-- Seletor de permissões -->
                   <div class="col-sm-8 menu-drop">
-                    <select name="listaPermissoes" id="permissoes" class="form-select"
-                      aria-label="">
+                    <select name="listaPermissoes" id="permissoes" class="form-select" aria-label="">
                       <option selected>Permissões:</option>
                       <option value="ROLE_USER">Usuário</option>
                       <option value="ROLE_PROJETOS">Projetos</option>
@@ -46,32 +59,36 @@
                   </div>
                 </div>
               </fieldset>
-              <!--<p><label>Senha</label><input type="password" v-model="user.senha" /></p>-->
+              <!-- Botão de salvar -->
               <div class="row gx-3 gy-2 col-sm-2 p-4 align-items-center">
-              <button class="btn btn-primary" @click="salvar">Salvar</button>
+                <button class="btn btn-primary salvar" @click="salvar">Salvar</button>
               </div>
             </form>
           </fieldset>
 
+          <!-- Tabela de usuários -->
           <table class="table table-dark table-striped">
+            <!-- Cabeçalho da tabela -->
             <thead>
               <tr>
                 <th>Login:</th>
                 <th>Nome:</th>
                 <th>Sobrenome:</th>
                 <th>Período:</th>
-                <th>Atualizar dados:</th>
+                <th>Editar dados:</th>
               </tr>
             </thead>
+            <!-- Corpo da tabela -->
             <tbody class="table-group-divider">
-              <tr v-for="(u, i) in usuarios" v-bind:key="i" >
+              <tr v-for="(u, i) in usuarios" v-bind:key="i"> <!-- Loop para listar usuários -->
                 <td>{{ u.login }}</td>
                 <td>{{ u.nome }}</td>
                 <td>{{ u.sobrenome }}</td>
-                <td align="center">{{ u.periodo }}</td>
-                <td align="center">
-              <button class="btn btn-primary atualizar" @click="abreEdit(u.id)">Editar</button>
-              </td>
+                <td>{{ u.periodo }}</td>
+                <td class="bots">
+                  <button class="btn btn-primary editar me-2" @click="abreEdit(u.id)">Editar</button> <!-- Botão para editar -->
+                  <button class="btn btn-danger excluir" @click.prevent="excluiUsuario(u.id)">Excluir</button> <!-- Botão para excluir -->
+                </td>
               </tr>
             </tbody>
           </table>
@@ -82,98 +99,134 @@
 </template>
 
 <script>
+// Importação dos componentes e serviços necessários
 import BarraNavegacao from "@/components/BarraNavegacao.vue";
 import AuthService from "@/services/AuthService";
+import axios from "axios";
 
 export default {
+  // Definição dos componentes utilizados
   components: {
     BarraNavegacao,
   },
+  // Dados do componente
   data() {
     return {
-      usuarios: [],
+      usuarios: [], // Lista de usuários
       user: {
         login: null,
         senha: null,
       },
     };
   },
+  // Função chamada quando o componente é montado
   mounted() {
-    console.log(AuthService.dados.token);
-    this.getUsuarios();
+    console.log(AuthService.dados.token); // Exibe o token no console
+    this.getUsuarios(); // Chama a função para obter os usuários
   },
+  // Métodos do componente
   methods: {
+    // Função para obter os usuários
     async getUsuarios() {
       try {
         let r = await fetch("http://localhost:8080/users", {
           method: "GET",
-          headers: { Authorization: `Bearer ${AuthService.dados.token}` },
+          headers: { Authorization: `Bearer ${AuthService.dados.token}` }, // Adiciona o token de autorização
         });
         r.json().then((j) => {
-          this.usuarios = j;
+          this.usuarios = j; // Define a lista de usuários
         });
       } catch (ex) {
-        console.log("ERRO", ex);
+        console.log("ERRO", ex); // Exibe erro no console
       }
     },
+    // Função para salvar um novo usuário
     async salvar() {
-      this.user.permissoes = ["ROLE_USER"];
-      console.log(JSON.stringify(this.user));
+      this.user.permissoes = ["ROLE_USER"]; // Define permissões padrão
+      console.log(JSON.stringify(this.user)); // Exibe os dados do usuário no console
       if (this.user.login != null && this.user.senha != null) {
         fetch("http://localhost:8080/users", {
           method: "POST",
-          body: JSON.stringify(this.user),
+          body: JSON.stringify(this.user), // Corpo da requisição com os dados do usuário
           headers: {
-            Authorization: `Bearer ${AuthService.dados.token}`,
+            Authorization: `Bearer ${AuthService.dados.token}`, // Adiciona o token de autorização
             "Content-Type": "application/json",
           },
         })
           .then((r) => {
             if (r.status != 200 || r.status != 201) {
               r.json().then((j) => {
-                console.log("ERRO", j);
+                console.log("ERRO", j); // Exibe erro no console
               });
             }
-            this.getUsuarios();
+            this.getUsuarios(); // Atualiza a lista de usuários
+            // Reseta os campos do formulário
+            this.user.login = "";
+            this.user.senha = "";
+            this.user.nome = "";
+            this.user.sobrenome = "";
+            this.user.periodo = "";
+            this.user.permissoes = "";
           })
           .catch((e) => {
-            console.log("ERRO", e);
+            console.log("ERRO", e); // Exibe erro no console
           });
       }
     },
+    // Função para abrir a edição de um usuário
     abreEdit(id) {
-      this.$router.push(`/usuarios/${id}`);
+      this.$router.push(`/usuarios/${id}`); // Navega para a rota de edição de usuário
+    },
+    // Função para excluir um usuário
+    async excluiUsuario(id) {
+      try {
+        const response = await axios.delete(`http://localhost:8080/users/${id}`, {
+          headers: {
+            Authorization: `Bearer ${AuthService.dados.token}`, // Adiciona o token de autorização
+          },
+        });
+        if (response.status === 200) {
+          this.getUsuarios(); // Atualiza a lista de usuários
+        } else {
+          console.log("ERRO", response.data); // Exibe erro no console
+        }
+      } catch (e) {
+        console.log("ERRO", e); // Exibe erro no console
+      }
     },
   },
 };
 </script>
 
 <style scoped>
+/* Estilo para os cabeçalhos da tabela */
+th {
+  text-align: center; /* Centraliza o texto */
+}
+
+/* Estilo para as células da tabela */
+td {
+  text-align: center; /* Centraliza o texto */
+}
+
+/* Estilo para o card */
 .card {
-  padding: 20px;
-  /* Define o espaçamento interno */
+  padding: 20px; /* Define o espaçamento interno */
 }
 
+/* Estilo para o seletor de permissões */
 .form-select {
-  width: 40%;
-  /* Ajuste a largura conforme necessário */
-  height: 38px;
-  /* Ajuste a altura conforme necessário */
-  font-size: 0.9em;
-  /* Ajuste o tamanho da fonte conforme necessário */
-  margin-left: 10px;
-  /* Ajuste a margem à esquerda conforme necessário */
+  width: 40%; /* Ajuste a largura conforme necessário */
+  height: 38px; /* Ajuste a altura conforme necessário */
+  font-size: 0.9em; /* Ajuste o tamanho da fonte conforme necessário */
+  margin-left: 10px; /* Ajuste a margem à esquerda conforme necessário */
 }
 
+/* Estilo para os inputs */
 .form-control {
-  height: 30px;
-  /* Ajuste a altura conforme necessário */
-  font-size: 0.9em;
-  /* Ajuste o tamanho da fonte conforme necessário */
-  margin-left: 10px;
-  /* Ajuste a margem à esquerda conforme necessário */
-
-
+  height: 30px; /* Ajuste a altura conforme necessário */
+  font-size: 0.9em; /* Ajuste o tamanho da fonte conforme necessário */
+  margin-left: 10px; /* Ajuste a margem à esquerda conforme necessário */
 }
 
 .form-group {
@@ -195,30 +248,32 @@ export default {
 
 }
 
-button {
+button-atualizar,
+button-salvar {
   /* Ajuste o tamanho da fonte conforme necessário */
   box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.745) !important;
+  margin: 0 6px;
 }
 
-button:hover {
+.salvar:hover {
   color: black;
   background-color: rgb(40, 232, 6);
 }
 
-.atualizar:hover {
-  background-color: yellow;
-}
-
 .menu-drop select {
-  font-size: 0.9em; /* Ajusta o tamanho da fonte conforme necessário */
-  margin-left: 10px; /* Ajusta a margem à esquerda conforme necessário */
-  width: 49%; /* Largura padrão de 49% */
+  font-size: 0.9em;
+  /* Ajusta o tamanho da fonte conforme necessário */
+  margin-left: 10px;
+  /* Ajusta a margem à esquerda conforme necessário */
+  width: 49%;
+  /* Largura padrão de 49% */
 }
 
 /* Media query para ajustar a largura em telas menores */
 @media only screen and (max-width: 768px) {
   .menu-drop select {
-    width: 100%; /* Largura de 100% quando a largura da tela for menor que 768px */
+    width: 100%;
+    /* Largura de 100% quando a largura da tela for menor que 768px */
   }
 }
 
@@ -226,7 +281,23 @@ table * {
   border: solid 1px black;
 }
 
-table tbody tr {
-  
+@media only screen and (max-width: 768px) {
+  .menu-drop select {
+    width: 100%;
+  }
+
+  .card {
+    padding: 10px;
+  }
+
+  fieldset {
+    padding: 10px;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 10px;
+  }
 }
+
 </style>
