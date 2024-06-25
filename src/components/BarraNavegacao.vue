@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid mb-3 p-3 bg">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navmenu">
       <a href="/">
         <img src="@/assets/logo.png" ref="../src/views/homeview" alt="Logo" class="navbar-brand" />
       </a>
@@ -24,8 +24,8 @@
             <router-link to="/sobre" class="nav-link">Sobre</router-link>
           </li>
         </ul>
-        <div class="deslogar">
-          <div class="log-user">{{ logado.login }}</div> | <button class="bot-deslogar" @click="desloga">Sair</button>
+        <div class="deslogar navbar-brand">
+          <div class="log-user ">{{ logado.login }}</div> | <button class="btn btn-primary" @click="desloga">Sair</button>
         </div>
       </div>
     </nav>
@@ -52,10 +52,13 @@ export default {
 </script>
 
 <style scoped>
+
+#navmenu {
+ text-align: center;
+}
+
 button {
   margin: 0 10px;
-  /* Ajuste a margem conforme necessário */
-  box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.745) !important;
 }
 
 .navbar {
@@ -82,13 +85,8 @@ button {
   margin-right: 20px;
 }
 
-.bot-deslogar {
-  border-radius: 6px !important;
-}
-
-.bot-deslogar:hover {
-  border-radius: 6px !important;
-  background-color: rgb(254, 229, 2) !important;
+button:hover {
+  color: black;
 }
 
 .log-user {
@@ -99,19 +97,4 @@ button {
   color: rgb(17, 0, 255);
 }
 
-
-/* Estilos responsivos */
-@media (max-width: 768px) {
-  .navbar-logo {
-    margin-right: 10px;
-    /* Ajuste do espaçamento da logo em telas pequenas */
-    margin-left: 10px;
-    /* Ajuste do espaçamento da logo em telas pequenas */
-  }
-
-  .navbar-nav {
-    flex-direction: column;
-    /* Menu em coluna em telas pequenas */
-  }
-}
 </style>

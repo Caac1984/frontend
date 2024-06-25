@@ -7,9 +7,7 @@
       <div class="col-lg-9 col-md-6 col-sm-8"> <!-- Ajusta o tamanho da coluna em diferentes dispositivos -->
         <!-- Card de login -->
         <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
-
           <h1>Projetos:</h1>
-
           <fieldset>
             <legend>Cadastro:</legend>
             <form @submit.prevent="salvar">
@@ -22,13 +20,13 @@
                     placeholder="Professor" required>
                 </div>
               </div>
-              <div class="row gx-3 gy-2 col-sm-2 align-items-center p-3">
+              <div class="row gx-3 gy-2 col-sm-0 align-items-center p-3">
                 <p><button type="submit" class="btn btn-primary">Salvar</button></p>
               </div>
             </form>
           </fieldset>
-          <table class="table table-dark table-striped">
-            <thead>
+          <table class="table table-primary table-striped ">
+            <thead class="table-dark">
               <tr>
                 <th>Projeto:</th>
                 <th>Professor:</th>
@@ -92,7 +90,7 @@ export default {
     async salvar() {
       try {
         const response = await axios.post("http://localhost:8080/projetos",
-        this.projeto, {
+          this.projeto, {
           headers: {
             Authorization: `Bearer ${AuthService.dados.token}`,
             "Content-Type": "application/json",
@@ -164,10 +162,6 @@ button:hover {
   color: black;
 }
 
-table * {
-  border: solid 1px black;
-}
-
 @media only screen and (max-width: 768px) {
   .menu-drop select {
     width: 100%;
@@ -186,5 +180,4 @@ table * {
     margin-top: 10px;
   }
 }
-
 </style>

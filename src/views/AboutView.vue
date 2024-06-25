@@ -9,8 +9,9 @@
                         <form class="form-group">
                             
                             <p class="fs-4">Alunos:</p>
-                            <table class="table table-dark table-striped">
-                                <thead>
+                            <hr>
+                            <table class="table table-primary table-striped">
+                                <thead class="table-dark">
                                     <tr>
                                         <th>Nome:</th>
                                         <th>Participação:</th>
@@ -54,5 +55,9 @@ export default {
 .card {
     padding: 10px;
     /* Define o espaçamento interno */
+}
+
+.table-dark {
+    background-color: blue;
 }
 </style>

@@ -39,12 +39,4 @@ body {
   
 }
 
-/* Estilos responsivos */
-/* Responsividade */
-@media (max-width: 768px) {
-  #app {
-    margin-top: 30px;
-  }
-}
-
 </style>
